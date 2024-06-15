@@ -3,5 +3,5 @@ LABEL maintainer "Alex Trevis <leitetrevisani@gmail.com>"
 COPY . /var/www
 WORKDIR /var/www
 RUN apk update && apk add zlib-dev jpeg-dev gcc musl-dev python3-dev postgresql-dev && pip install -r requirements.txt && python manage.py migrate
-ENTRYPOINT gunicorn --bind 0.0.0.0:8000 fusion.wsgi
+ENTRYPOINT python manage.py runserver 0.0.0.0:8000
 EXPOSE 8000
